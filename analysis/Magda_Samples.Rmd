@@ -1,0 +1,458 @@
+---
+title: "Magda_Samples"
+author: "Sophie"
+date: "2026-06-10"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+## Libraries
+
+```{r error=TRUE, message=FALSE}
+rm(list=ls())
+gc()
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(Seurat)
+library(hdf5r)
+library(scCustomize)
+library(patchwork)
+library(cowplot)
+library(ggrepel)
+library(workflowr)
+```
+
+
+# Get directory
+
+```{r error=FALSE, warning=FALSE}
+
+Cellbender.master <- "/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output"
+
+benderfiles <- list.files(
+  path = Cellbender.master, 
+  pattern = "cellbender_output_Sample.*\\.h5", 
+  full.names = TRUE, 
+  recursive = TRUE
+)
+
+Raw.master <- "/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellranger_output"
+
+rawfiles <- list.files(
+  path = Raw.master, 
+  pattern = "Sample.*\\.h5", 
+  full.names = TRUE, 
+  recursive = TRUE
+)
+
+
+
+```
+
+# individual import
+
+```{r error=FALSE, warning=FALSE}
+
+##################################################################### Sample 1
+benderfiles[1]
+
+bender.s1.counts <- Read_CellBender_h5_Mat(benderfiles[1])
+bender.s1    <- CreateSeuratObject(counts = bender.s1.counts, project = paste0("Sample1_Bender"))
+bender.s1[["percent.mt"]] <- PercentageFeatureSet(bender.s1, pattern = "^MT-")
+bender.s1[["percent.rb"]] <- PercentageFeatureSet(bender.s1, pattern = "^RP[SL]")
+
+bender.s1$Method <- "Cellbender"
+bender.s1$Sample <- "Sample1"
+
+head(bender.s1)
+
+############################### raw
+
+rawfiles[1]
+
+raw.s1.counts <- Read_CellBender_h5_Mat(rawfiles[1])
+raw.s1    <- CreateSeuratObject(counts = raw.s1.counts, project = paste0("Sample1_raw"))
+raw.s1[["percent.mt"]] <- PercentageFeatureSet(raw.s1, pattern = "^MT-")
+raw.s1[["percent.rb"]] <- PercentageFeatureSet(raw.s1, pattern = "^RP[SL]")
+
+raw.s1$Method <- "Raw"
+raw.s1$Sample <- "Sample1"
+
+head(raw.s1)
+
+##################################################################### Sample 2
+
+benderfiles[2]
+
+bender.s2.counts <- Read_CellBender_h5_Mat(benderfiles[2])
+bender.s2    <- CreateSeuratObject(counts = bender.s2.counts, project = paste0("Sample2_Bender"))
+bender.s2[["percent.mt"]] <- PercentageFeatureSet(bender.s2, pattern = "^MT-")
+bender.s2[["percent.rb"]] <- PercentageFeatureSet(bender.s2, pattern = "^RP[SL]")
+
+bender.s2$Method <- "Cellbender"
+bender.s2$Sample <- "Sample2"
+
+head(bender.s2)
+
+############################### raw
+
+rawfiles[2]
+
+raw.s2.counts <- Read_CellBender_h5_Mat(rawfiles[2])
+raw.s2    <- CreateSeuratObject(counts = raw.s2.counts, project = paste0("Sample2_raw"))
+raw.s2[["percent.mt"]] <- PercentageFeatureSet(raw.s2, pattern = "^MT-")
+raw.s2[["percent.rb"]] <- PercentageFeatureSet(raw.s2, pattern = "^RP[SL]")
+
+raw.s2$Method <- "Raw"
+raw.s2$Sample <- "Sample2"
+
+head(raw.s2)
+
+
+
+##################################################################### Sample 3
+
+benderfiles[3]
+
+bender.s3.counts <- Read_CellBender_h5_Mat(benderfiles[3])
+bender.s3    <- CreateSeuratObject(counts = bender.s3.counts, project = paste0("Sample3_Bender"))
+bender.s3[["percent.mt"]] <- PercentageFeatureSet(bender.s3, pattern = "^MT-")
+bender.s3[["percent.rb"]] <- PercentageFeatureSet(bender.s3, pattern = "^RP[SL]")
+
+bender.s3$Method <- "Cellbender"
+bender.s3$Sample <- "Sample3"
+
+head(bender.s3)
+
+############################### raw
+
+rawfiles[3]
+
+raw.s3.counts <- Read_CellBender_h5_Mat(rawfiles[3])
+raw.s3    <- CreateSeuratObject(counts = raw.s3.counts, project = paste0("Sample3_raw"))
+raw.s3[["percent.mt"]] <- PercentageFeatureSet(raw.s3, pattern = "^MT-")
+raw.s3[["percent.rb"]] <- PercentageFeatureSet(raw.s3, pattern = "^RP[SL]")
+
+raw.s3$Method <- "Raw"
+raw.s3$Sample <- "Sample3"
+
+head(raw.s3)
+
+
+
+##################################################################### Sample 4
+
+benderfiles[4]
+
+bender.s4.counts <- Read_CellBender_h5_Mat(benderfiles[4])
+bender.s4    <- CreateSeuratObject(counts = bender.s4.counts, project = paste0("Sample4_Bender"))
+bender.s4[["percent.mt"]] <- PercentageFeatureSet(bender.s4, pattern = "^MT-")
+bender.s4[["percent.rb"]] <- PercentageFeatureSet(bender.s4, pattern = "^RP[SL]")
+
+bender.s4$Method <- "Cellbender"
+bender.s4$Sample <- "Sample4"
+bender.s4
+head(bender.s4)
+
+############################### raw
+
+rawfiles[4]
+
+raw.s4.counts <- Read_CellBender_h5_Mat(rawfiles[4])
+raw.s4    <- CreateSeuratObject(counts = raw.s4.counts, project = paste0("Sample4_raw"))
+raw.s4[["percent.mt"]] <- PercentageFeatureSet(raw.s4, pattern = "^MT-")
+raw.s4[["percent.rb"]] <- PercentageFeatureSet(raw.s4, pattern = "^RP[SL]")
+
+raw.s4$Method <- "Raw"
+raw.s4$Sample <- "Sample4"
+raw.s4
+head(raw.s4)
+
+```
+
+
+# Functions
+
+```{r error=TRUE}
+process_single_cell_pair <- function(b_file, r_file, s_name) {
+
+  # bender object
+  counts_b <- Read_CellBender_h5_Mat(b_file)
+  obj_b    <- CreateSeuratObject(counts = counts_b, project = paste0(s_name, "_Bender"))
+  obj_b[["percent.mt"]] <- PercentageFeatureSet(obj_b, pattern = "^MT-")
+  obj_b[["percent.rb"]] <- PercentageFeatureSet(obj_b, pattern = "^RP[SL]")
+  
+  meta_b <- obj_b@meta.data
+  meta_b$Method <- "Cellbender"
+  meta_b$Sample <- s_name
+  
+  # raw object
+  counts_r <- Read10X_h5(r_file)
+  obj_r    <- CreateSeuratObject(counts = counts_r, project = paste0(s_name, "_raw"))
+  obj_r[["percent.mt"]] <- PercentageFeatureSet(obj_r, pattern = "^MT-")
+  obj_r[["percent.rb"]] <- PercentageFeatureSet(obj_r, pattern = "^RP[SL]")
+  
+  meta_r <- obj_r@meta.data
+  meta_r$Method <- "Raw"
+  meta_r$Sample <- s_name
+  
+  columns_to_keep <- c("nCount_RNA", "nFeature_RNA", "percent.mt", "percent.rb", "Method", "Sample")
+  combined_metadata <- rbind(meta_b[, columns_to_keep], meta_r[, columns_to_keep])
+  
+  results <- list(
+    bender_obj = obj_b,
+    raw_obj    = obj_r,
+    metadata   = combined_metadata
+  )
+  
+  return(results)
+}
+
+########################################################################
+
+
+generate_qc_plots <- function(df, s_name) {
+  
+  # 1. Filter data for the specific sample
+  sample_df <- df[df$Sample == s_name, ]
+  
+  # Plot
+  p1 <- ggplot(sample_df, aes(x = Method, y = nCount_RNA, fill = Method)) +
+    geom_violin(alpha = 0.7) +
+    theme_classic() +
+    labs(title = "nCount_RNA", x = NULL, y = NULL) + 
+    theme(legend.position = "none")
+
+  p2 <- ggplot(sample_df, aes(x = Method, y = nFeature_RNA, fill = Method)) +
+    geom_violin(alpha = 0.7) +
+    theme_classic() +
+    labs(title = "nFeature_RNA", x = NULL, y = NULL) + 
+    theme(legend.position = "none")
+
+  p3 <- ggplot(sample_df, aes(x = Method, y = percent.mt, fill = Method)) +
+    geom_violin(alpha = 0.7) +
+    theme_classic() +
+    labs(title = "percent.mt", x = NULL, y = NULL) + 
+    theme(legend.position = "none")
+
+  p4 <- ggplot(sample_df, aes(x = Method, y = percent.rb, fill = Method)) +
+    geom_violin(alpha = 0.7) +
+    theme_classic() +
+    labs(title = "percent.rb", x = NULL, y = NULL) + 
+    theme(legend.position = "none")
+
+  # patchwork
+  sample_grid <- (p1 + p2) / (p3 + p4) + 
+    plot_annotation(
+      title = s_name, 
+      theme = theme(plot.title = element_text(size = 16, face = "bold", hjust = 0.5))
+    )
+  
+  # Zoomed grid
+  p1_zoom <- p1 + coord_cartesian(ylim = c(0, 60000))
+  p3_zoom <- p3 + coord_cartesian(ylim = c(0, 5))
+  p4_zoom <- p4 + coord_cartesian(ylim = c(0, 5))
+  
+  sample_grid_zoom <- (p1_zoom + p2) / (p3_zoom + p4_zoom) + 
+    plot_annotation(
+      title = paste0(s_name, " (Zoom)"),
+      theme = theme(plot.title = element_text(size = 16, face = "bold", hjust = 0.5))
+    )
+  
+  print(sample_grid)
+  print(sample_grid_zoom)
+}
+
+
+```
+
+```{r error=TRUE}
+seurat_bender_list <- list()
+seurat_raw_list    <- list()
+metadata_qc_list   <- list()
+
+```
+
+```{r error=FALSE, warning=FALSE}
+sample_names <- gsub("cellbender_output_|_filtered\\.h5", "", basename(benderfiles))
+no.benderfiles <- rawfiles
+all_metadata_list <- list()
+
+for (i in seq_along(benderfiles)) {
+  
+  s_name <- sample_names[i]
+  b_file <- benderfiles[i]
+  
+  # Find the exact matching raw file
+  r_file <- no.benderfiles[grep(s_name, basename(no.benderfiles))][1]
+  
+  # Safety check to prevent crashing on missing files
+  if (is.na(r_file) || length(r_file) == 0) {
+    warning(paste("Skipping: No raw file found for", s_name))
+    next
+  }
+  
+  # Process pair
+  res <- process_single_cell_pair(b_file = b_file, r_file = r_file, s_name = s_name)
+  
+  df <- res$metadata
+  all_metadata_list[[s_name]] <- df
+  
+  # 
+  generate_qc_plots(df = df, s_name = s_name)
+  
+  rm(res, df)
+  gc()
+}
+
+# 3. Combine all individual dataframes into one master dataframe at the end
+master_compare_df <- do.call(rbind, all_metadata_list)
+
+table(master_compare_df$Sample)
+
+```
+
+
+# Comparing cell counts
+
+Sample 2-4 seems like something went wrong..
+
+```{r error=FALSE, warning=FALSE}
+
+counts_matrix <- table(master_compare_df$Sample, master_compare_df$Method)
+
+counts_wide <- as.data.frame.matrix(counts_matrix)
+
+counts_wide$Sample <- rownames(counts_wide)
+
+
+#################################################################
+
+
+ggplot(counts_wide, aes(x = Raw, y = Cellbender)) +
+  geom_abline(intercept = 0, slope = 1, color = "grey50", size = 0.8) +
+  geom_point(color = "#4682B4", size = 4, alpha = 0.9) +
+  
+  # Labels
+  geom_text_repel(aes(label = Sample), size = 3.5, fontface = "bold", box.padding = 0.4) +
+  
+  # Layout styling
+  theme_classic() +
+  labs(
+    title = "Cell Count Retention: Raw vs. Cellbender",
+    x = "Raw Cell Count (Cellranger)",
+    y = "Cellbender Cell Count"
+  ) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    plot.subtitle = element_text(size = 10, color = "grey30", hjust = 0.5),
+    axis.title = element_text(face = "bold", size = 11)
+  )
+```
+
+
+# Checking "corrupted" file? Exp3_CMHEF_TGF
+
+```{r error=FALSE, warning=FALSE}
+##################################################################### Sample 1
+path1 <- "/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Exp3_CMHEF_TGF_filtered.h5"
+
+
+bender.s1.counts <- Read_CellBender_h5_Mat(path1)
+bender.s1    <- CreateSeuratObject(counts = bender.s1.counts, project = paste0("Exp3_CMHEF_TGF_Bender"))
+bender.s1[["percent.mt"]] <- PercentageFeatureSet(bender.s1, pattern = "^MT-")
+bender.s1[["percent.rb"]] <- PercentageFeatureSet(bender.s1, pattern = "^RP[SL]")
+
+bender.s1$Method <- "Cellbender"
+bender.s1$Sample <- "Exp3_CMHEF_TGF"
+
+bender.s1
+
+head(bender.s1)
+
+############################### raw
+
+path2 <- "/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellranger_output/Exp3_CMHEF_TGF_filtered_feature_bc_matrix.h5"
+
+
+raw.s1.counts <- Read_CellBender_h5_Mat(path2)
+raw.s1    <- CreateSeuratObject(counts = raw.s1.counts, project = paste0("Exp3_CMHEF_TGF_raw"))
+raw.s1[["percent.mt"]] <- PercentageFeatureSet(raw.s1, pattern = "^MT-")
+raw.s1[["percent.rb"]] <- PercentageFeatureSet(raw.s1, pattern = "^RP[SL]")
+
+raw.s1$Method <- "Raw"
+raw.s1$Sample <- "Sample1"
+
+raw.s1
+head(raw.s1)
+
+
+################################################################# merge
+
+Exp3_CMHEF_TGF <- merge(
+  x = bender.s1,
+  y = raw.s1,
+  add.cell.ids = c("S1_B", "S1_R")
+)
+
+```
+
+# Exp3_CMHEF_TGF Plots
+
+It looks almost the same? only 127 droplets removed?
+
+```{r error=FALSE, warning=FALSE}
+p1 <- VlnPlot(
+  object = Exp3_CMHEF_TGF,
+  features = "nCount_RNA",
+  group.by = "Sample",   
+  split.by = "Method", 
+  pt.size = 0,
+  y.max = 35000, 
+  raster = FALSE
+)
+
+p2 <- VlnPlot(
+  object = Exp3_CMHEF_TGF,
+  features = "nFeature_RNA",
+  group.by = "Sample",   
+  split.by = "Method",   
+  pt.size = 0, 
+  raster = FALSE
+)
+
+p3 <- VlnPlot(
+  object = Exp3_CMHEF_TGF,
+  features = "percent.mt",
+  group.by = "Sample",   
+  split.by = "Method",   
+  pt.size = 0, 
+  y.max = 5,
+  raster = FALSE             
+)
+
+p4 <- VlnPlot(
+  object = Exp3_CMHEF_TGF,
+  features = "percent.rb",
+  group.by = "Sample",   
+  split.by = "Method",   
+  pt.size = 0,
+  y.max = 10,
+  raster = FALSE
+)
+
+p1
+p2
+p3
+p4
+```
+
+```{r error=FALSE, warning=FALSE}
+
+```
+
+```{r error=FALSE, warning=FALSE}
+
+```

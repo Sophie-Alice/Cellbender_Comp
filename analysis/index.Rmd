@@ -8,5 +8,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-* [Cellbender vs. Raw Data QC Comparison](1-Import-Data.html)
+* [Cellbender vs. Raw Data QC Comparison - Exp Round 1](1-Import-Data.html)
+
+* [Cellbender vs. Raw Data QC Comparison - Sample 1-4 ](Magda_Samples.html)
 
