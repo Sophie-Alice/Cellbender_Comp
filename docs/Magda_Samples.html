@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Sophie" />
+
+<meta name="date" content="2026-06-10" />
+
+<title>Magda_Samples</title>
+
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cellbender_Comp</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Magda_Samples</h1>
+<h4 class="author">Sophie</h4>
+<h4 class="date">2026-06-10</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2026-06-10
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>Cellbender_Comp/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.2). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20260609code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20260609)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20260609code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20260609)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSophieAliceCellbenderComptree835fc77a1cde58c4b914ae7858f3872a06ea50e4targetblank835fc77a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/tree/835fc77a1cde58c4b914ae7858f3872a06ea50e4" target="_blank">835fc77</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomSophieAliceCellbenderComptree835fc77a1cde58c4b914ae7858f3872a06ea50e4targetblank835fc77a"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/tree/835fc77a1cde58c4b914ae7858f3872a06ea50e4" target="_blank">835fc77</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+working directory clean
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/Magda_Samples.Rmd</code>) and
+HTML (<code>docs/Magda_Samples.html</code>) files. If you’ve configured
+a remote Git repository (see <code>?wflow_git_remote</code>), click on
+the hyperlinks in the table below to view the files as they were in that
+past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/835fc77a1cde58c4b914ae7858f3872a06ea50e4/analysis/Magda_Samples.Rmd" target="_blank">835fc77</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-10
+</td>
+<td>
+Updates
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="libraries" class="section level2">
+<h2>Libraries</h2>
+<pre class="r"><code>rm(list=ls())
+gc()</code></pre>
+<pre><code>          used (Mb) gc trigger (Mb) max used (Mb)
+Ncells  894129 47.8    1719267 91.9  1315225 70.3
+Vcells 1568150 12.0    8388608 64.0  2320292 17.8</code></pre>
+<pre class="r"><code>library(readr)
+library(dplyr)
+library(ggplot2)
+library(Seurat)
+library(hdf5r)
+library(scCustomize)
+library(patchwork)
+library(cowplot)
+library(ggrepel)
+library(workflowr)</code></pre>
+</div>
+<div id="get-directory" class="section level1">
+<h1>Get directory</h1>
+<pre class="r"><code>Cellbender.master &lt;- &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output&quot;
+
+benderfiles &lt;- list.files(
+  path = Cellbender.master, 
+  pattern = &quot;cellbender_output_Sample.*\\.h5&quot;, 
+  full.names = TRUE, 
+  recursive = TRUE
+)
+
+Raw.master &lt;- &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellranger_output&quot;
+
+rawfiles &lt;- list.files(
+  path = Raw.master, 
+  pattern = &quot;Sample.*\\.h5&quot;, 
+  full.names = TRUE, 
+  recursive = TRUE
+)</code></pre>
+</div>
+<div id="individual-import" class="section level1">
+<h1>individual import</h1>
+<pre class="r"><code>##################################################################### Sample 1
+benderfiles[1]</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Sample1_filtered.h5&quot;</code></pre>
+<pre class="r"><code>bender.s1.counts &lt;- Read_CellBender_h5_Mat(benderfiles[1])
+bender.s1    &lt;- CreateSeuratObject(counts = bender.s1.counts, project = paste0(&quot;Sample1_Bender&quot;))
+bender.s1[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s1, pattern = &quot;^MT-&quot;)
+bender.s1[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(bender.s1, pattern = &quot;^RP[SL]&quot;)
+
+bender.s1$Method &lt;- &quot;Cellbender&quot;
+bender.s1$Sample &lt;- &quot;Sample1&quot;
+
+head(bender.s1)</code></pre>
+<pre><code>                       orig.ident nCount_RNA nFeature_RNA  percent.mt
+AACGTAGGTGACTCCA-1 Sample1_Bender     125705        12344 0.038184639
+CCTCCTGGTGCAAGGT-1 Sample1_Bender     102148         9759 0.025453264
+CTAGCATGTAGGCGTG-1 Sample1_Bender      89164         9899 0.052711857
+CCGGCATGTTATGTCA-1 Sample1_Bender      86323        10595 0.040545393
+CAGGGATGTTAAGTCC-1 Sample1_Bender      83524         9846 0.282553518
+ACGGGATGTTCGTGCA-1 Sample1_Bender      82115        10155 0.004871217
+CCCTGTTGTGAGAGTC-1 Sample1_Bender      81692        10055 0.001224110
+AACGGTAGTGCGCATC-1 Sample1_Bender      80414        10969 0.054716840
+TCTCTATGTTAGACAG-1 Sample1_Bender      76026         8801 0.000000000
+ATTACTGGTTGTCCCT-1 Sample1_Bender      75240        10143 0.203349282
+                   percent.rb     Method  Sample
+AACGTAGGTGACTCCA-1  0.4025297 Cellbender Sample1
+CCTCCTGGTGCAAGGT-1  0.1869836 Cellbender Sample1
+CTAGCATGTAGGCGTG-1  0.2702885 Cellbender Sample1
+CCGGCATGTTATGTCA-1  0.3081450 Cellbender Sample1
+CAGGGATGTTAAGTCC-1  1.1685264 Cellbender Sample1
+ACGGGATGTTCGTGCA-1  0.3422030 Cellbender Sample1
+CCCTGTTGTGAGAGTC-1  0.1701513 Cellbender Sample1
+AACGGTAGTGCGCATC-1  0.4252991 Cellbender Sample1
+TCTCTATGTTAGACAG-1  0.1775708 Cellbender Sample1
+ATTACTGGTTGTCCCT-1  0.6844763 Cellbender Sample1</code></pre>
+<pre class="r"><code>############################### raw
+
+rawfiles[1]</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellranger_output/Sample1_filtered_feature_bc_matrix.h5&quot;</code></pre>
+<pre class="r"><code>raw.s1.counts &lt;- Read_CellBender_h5_Mat(rawfiles[1])
+raw.s1    &lt;- CreateSeuratObject(counts = raw.s1.counts, project = paste0(&quot;Sample1_raw&quot;))
+raw.s1[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(raw.s1, pattern = &quot;^MT-&quot;)
+raw.s1[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(raw.s1, pattern = &quot;^RP[SL]&quot;)
+
+raw.s1$Method &lt;- &quot;Raw&quot;
+raw.s1$Sample &lt;- &quot;Sample1&quot;
+
+head(raw.s1)</code></pre>
+<pre><code>                    orig.ident nCount_RNA nFeature_RNA percent.mt percent.rb
+AAACCCTGTAACGACA-1 Sample1_raw      16110         4609 0.05586592  0.2420857
+AAACCCTGTGAGGCCA-1 Sample1_raw        721          522 0.69348128  1.9417476
+AAACGATGTGCAACTT-1 Sample1_raw      15320         4807 0.09138381  0.2154047
+AAACGATGTGCATCAT-1 Sample1_raw        677          468 0.44313146  1.7725258
+AAACGATGTTACACTA-1 Sample1_raw       3608         1462 0.99778271  4.5454545
+AAACGATGTTAGGGTA-1 Sample1_raw        795          587 0.50314465  1.3836478
+AAACTCCGTAACGATG-1 Sample1_raw        599          411 0.16694491  1.1686144
+AAACTCCGTAGCTGGG-1 Sample1_raw        592          430 1.18243243  1.6891892
+AAACTCCGTCTTGATA-1 Sample1_raw      23485         5356 0.02129019  0.2086438
+AAACTCCGTTGGACCC-1 Sample1_raw        750          534 1.33333333  2.6666667
+                   Method  Sample
+AAACCCTGTAACGACA-1    Raw Sample1
+AAACCCTGTGAGGCCA-1    Raw Sample1
+AAACGATGTGCAACTT-1    Raw Sample1
+AAACGATGTGCATCAT-1    Raw Sample1
+AAACGATGTTACACTA-1    Raw Sample1
+AAACGATGTTAGGGTA-1    Raw Sample1
+AAACTCCGTAACGATG-1    Raw Sample1
+AAACTCCGTAGCTGGG-1    Raw Sample1
+AAACTCCGTCTTGATA-1    Raw Sample1
+AAACTCCGTTGGACCC-1    Raw Sample1</code></pre>
+<pre class="r"><code>##################################################################### Sample 2
+
+benderfiles[2]</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Sample2_filtered.h5&quot;</code></pre>
+<pre class="r"><code>bender.s2.counts &lt;- Read_CellBender_h5_Mat(benderfiles[2])
+bender.s2    &lt;- CreateSeuratObject(counts = bender.s2.counts, project = paste0(&quot;Sample2_Bender&quot;))
+bender.s2[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s2, pattern = &quot;^MT-&quot;)
+bender.s2[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(bender.s2, pattern = &quot;^RP[SL]&quot;)
+
+bender.s2$Method &lt;- &quot;Cellbender&quot;
+bender.s2$Sample &lt;- &quot;Sample2&quot;
+
+head(bender.s2)</code></pre>
+<pre><code>                       orig.ident nCount_RNA nFeature_RNA  percent.mt
+CTGCCATCATTAACTC-1 Sample2_Bender     121828        10628 0.311915159
+GTCACCTCATAGGTTA-1 Sample2_Bender      78207         8964 0.008950605
+CAGTCCTCAGGATTCG-1 Sample2_Bender      80964         9925 0.007410701
+GGAAAGCCACTAATGA-1 Sample2_Bender      74139         6919 0.010790542
+CCGAAATCAGTTAATG-1 Sample2_Bender      73658         9873 0.080099921
+CCACCTGCATTAGTAG-1 Sample2_Bender      71664         8949 0.011163206
+GGAGAACCATGCAGAT-1 Sample2_Bender      71519         9476 0.184566339
+ATATCCTCATTCGGGA-1 Sample2_Bender      67513         8623 0.005924785
+CCTCGATCAGCCATGA-1 Sample2_Bender      68059         9046 0.004407940
+GCGTTTCCAATCCCGT-1 Sample2_Bender      66924         8556 0.025401948
+                   percent.rb     Method  Sample
+CTGCCATCATTAACTC-1  1.2353482 Cellbender Sample2
+GTCACCTCATAGGTTA-1  0.1969133 Cellbender Sample2
+CAGTCCTCAGGATTCG-1  0.1815622 Cellbender Sample2
+GGAAAGCCACTAATGA-1  0.1146495 Cellbender Sample2
+CCGAAATCAGTTAATG-1  0.2131472 Cellbender Sample2
+CCACCTGCATTAGTAG-1  0.1367493 Cellbender Sample2
+GGAGAACCATGCAGAT-1  0.7676282 Cellbender Sample2
+ATATCCTCATTCGGGA-1  0.1407136 Cellbender Sample2
+CCTCGATCAGCCATGA-1  0.2468446 Cellbender Sample2
+GCGTTTCCAATCCCGT-1  0.1748252 Cellbender Sample2</code></pre>
+<pre class="r"><code>############################### raw
+
+rawfiles[2]</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellranger_output/Sample2_filtered_feature_bc_matrix.h5&quot;</code></pre>
+<pre class="r"><code>raw.s2.counts &lt;- Read_CellBender_h5_Mat(rawfiles[2])
+raw.s2    &lt;- CreateSeuratObject(counts = raw.s2.counts, project = paste0(&quot;Sample2_raw&quot;))
+raw.s2[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(raw.s2, pattern = &quot;^MT-&quot;)
+raw.s2[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(raw.s2, pattern = &quot;^RP[SL]&quot;)
+
+raw.s2$Method &lt;- &quot;Raw&quot;
+raw.s2$Sample &lt;- &quot;Sample2&quot;
+
+head(raw.s2)</code></pre>
+<pre><code>                    orig.ident nCount_RNA nFeature_RNA  percent.mt percent.rb
+AAACGGACAACTGTGG-1 Sample2_raw        848          614  4.48113208  1.7688679
+AAACGGACATCGCTTA-1 Sample2_raw      14000         4327  0.06428571  0.3500000
+AAACGGACATTCGGGA-1 Sample2_raw       1117          616 13.33930170  2.2381379
+AAACGTCCAAGTTACA-1 Sample2_raw      25189         5449  0.02381992  0.1627695
+AAACGTCCAATAGCCG-1 Sample2_raw      14213         4294  0.03517906  0.2462534
+AAACGTCCAGGGACAG-1 Sample2_raw        851          387 25.49941246  1.5276146
+AAACTTGCAATCTAAG-1 Sample2_raw      15501         4126  0.01935359  0.1677311
+AAACTTGCAGGAGCCT-1 Sample2_raw      39260         7479  0.08150790  0.2521651
+AAACTTGCATCGGGAC-1 Sample2_raw      28935         5660  0.02419215  0.1762571
+AAAGCCTCAACTGTAA-1 Sample2_raw       2015          862  0.04962779  0.6947891
+                   Method  Sample
+AAACGGACAACTGTGG-1    Raw Sample2
+AAACGGACATCGCTTA-1    Raw Sample2
+AAACGGACATTCGGGA-1    Raw Sample2
+AAACGTCCAAGTTACA-1    Raw Sample2
+AAACGTCCAATAGCCG-1    Raw Sample2
+AAACGTCCAGGGACAG-1    Raw Sample2
+AAACTTGCAATCTAAG-1    Raw Sample2
+AAACTTGCAGGAGCCT-1    Raw Sample2
+AAACTTGCATCGGGAC-1    Raw Sample2
+AAAGCCTCAACTGTAA-1    Raw Sample2</code></pre>
+<pre class="r"><code>##################################################################### Sample 3
+
+benderfiles[3]</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Sample3_filtered.h5&quot;</code></pre>
+<pre class="r"><code>bender.s3.counts &lt;- Read_CellBender_h5_Mat(benderfiles[3])
+bender.s3    &lt;- CreateSeuratObject(counts = bender.s3.counts, project = paste0(&quot;Sample3_Bender&quot;))
+bender.s3[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s3, pattern = &quot;^MT-&quot;)
+bender.s3[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(bender.s3, pattern = &quot;^RP[SL]&quot;)
+
+bender.s3$Method &lt;- &quot;Cellbender&quot;
+bender.s3$Sample &lt;- &quot;Sample3&quot;
+
+head(bender.s3)</code></pre>
+<pre><code>                       orig.ident nCount_RNA nFeature_RNA  percent.mt
+CATTGGATCCATAGAT-1 Sample3_Bender     122208        10988 0.010637601
+AGAGTAATCATGCGCG-1 Sample3_Bender     113907        11654 0.057942005
+TACATCCTCCAACTGA-1 Sample3_Bender     109396        10631 0.147171743
+GTATCCTTCGATCCGG-1 Sample3_Bender     111475         9694 0.256559767
+CTTGCCATCCAGGTAC-1 Sample3_Bender     107083        10253 1.420393527
+AAGTCCATCCGGTTGG-1 Sample3_Bender      98460        10573 0.078204347
+CTTCGGCTCGCGTCCT-1 Sample3_Bender      94171        10466 0.048847310
+CCGAATATCGTTAGGC-1 Sample3_Bender      86359        10197 0.040528492
+GTGTTAGTCGCTAGGT-1 Sample3_Bender      83284         9435 0.009605687
+AGAAGGTTCCCATATC-1 Sample3_Bender      79987         9425 0.018753047
+                   percent.rb     Method  Sample
+CATTGGATCCATAGAT-1  0.1816575 Cellbender Sample3
+AGAGTAATCATGCGCG-1  0.2835647 Cellbender Sample3
+TACATCCTCCAACTGA-1  0.2970858 Cellbender Sample3
+GTATCCTTCGATCCGG-1  1.3841669 Cellbender Sample3
+CTTGCCATCCAGGTAC-1  1.3652961 Cellbender Sample3
+AAGTCCATCCGGTTGG-1  0.2315661 Cellbender Sample3
+CTTCGGCTCGCGTCCT-1  0.2729078 Cellbender Sample3
+CCGAATATCGTTAGGC-1  0.2512766 Cellbender Sample3
+GTGTTAGTCGCTAGGT-1  0.1909130 Cellbender Sample3
+AGAAGGTTCCCATATC-1  0.2125345 Cellbender Sample3</code></pre>
+<pre class="r"><code>############################### raw
+
+rawfiles[3]</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellranger_output/Sample3_filtered_feature_bc_matrix.h5&quot;</code></pre>
+<pre class="r"><code>raw.s3.counts &lt;- Read_CellBender_h5_Mat(rawfiles[3])
+raw.s3    &lt;- CreateSeuratObject(counts = raw.s3.counts, project = paste0(&quot;Sample3_raw&quot;))
+raw.s3[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(raw.s3, pattern = &quot;^MT-&quot;)
+raw.s3[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(raw.s3, pattern = &quot;^RP[SL]&quot;)
+
+raw.s3$Method &lt;- &quot;Raw&quot;
+raw.s3$Sample &lt;- &quot;Sample3&quot;
+
+head(raw.s3)</code></pre>
+<pre><code>                    orig.ident nCount_RNA nFeature_RNA   percent.mt percent.rb
+AAACCATTCCACCATT-1 Sample3_raw      24326         5404  0.020554140  0.1808764
+AAACCATTCTAAGCGC-1 Sample3_raw       6597         2959  1.576474155  5.7753524
+AAACCGCTCGATATGT-1 Sample3_raw      41951         7566  0.030988534  0.1835475
+AAACCGCTCGTGCTCC-1 Sample3_raw       1182          498 33.248730964  1.2690355
+AAACCGCTCTATGGGC-1 Sample3_raw      14005         4153  0.007140307  0.1856480
+AAACGAATCACGCGAT-1 Sample3_raw        548          423  1.459854015  2.1897810
+AAACGAATCTAGTAAC-1 Sample3_raw      34989         6586  0.008574123  0.2200692
+AAACGCCTCCGCGCTT-1 Sample3_raw      28365         6918  0.454785828  1.1951348
+AAACGCCTCGTCTATC-1 Sample3_raw      12203         4318  0.040973531  0.3769565
+AAACGGGTCCGCCAAG-1 Sample3_raw       1366          729 18.448023426  1.9765739
+                   Method  Sample
+AAACCATTCCACCATT-1    Raw Sample3
+AAACCATTCTAAGCGC-1    Raw Sample3
+AAACCGCTCGATATGT-1    Raw Sample3
+AAACCGCTCGTGCTCC-1    Raw Sample3
+AAACCGCTCTATGGGC-1    Raw Sample3
+AAACGAATCACGCGAT-1    Raw Sample3
+AAACGAATCTAGTAAC-1    Raw Sample3
+AAACGCCTCCGCGCTT-1    Raw Sample3
+AAACGCCTCGTCTATC-1    Raw Sample3
+AAACGGGTCCGCCAAG-1    Raw Sample3</code></pre>
+<pre class="r"><code>##################################################################### Sample 4
+
+benderfiles[4]</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Sample4_filtered.h5&quot;</code></pre>
+<pre class="r"><code>bender.s4.counts &lt;- Read_CellBender_h5_Mat(benderfiles[4])
+bender.s4    &lt;- CreateSeuratObject(counts = bender.s4.counts, project = paste0(&quot;Sample4_Bender&quot;))
+bender.s4[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s4, pattern = &quot;^MT-&quot;)
+bender.s4[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(bender.s4, pattern = &quot;^RP[SL]&quot;)
+
+bender.s4$Method &lt;- &quot;Cellbender&quot;
+bender.s4$Sample &lt;- &quot;Sample4&quot;
+bender.s4</code></pre>
+<pre><code>An object of class Seurat 
+38606 features across 26618 samples within 1 assay 
+Active assay: RNA (38606 features, 0 variable features)
+ 1 layer present: counts</code></pre>
+<pre class="r"><code>head(bender.s4)</code></pre>
+<pre><code>                       orig.ident nCount_RNA nFeature_RNA  percent.mt
+CATAGTTAGCTTCCTG-1 Sample4_Bender     113667        10823 0.005278577
+ACTGCTAAGGGGCAAC-1 Sample4_Bender      90223         9327 0.007758554
+CTGTAATAGCGGTCCA-1 Sample4_Bender      81369         9925 0.058990525
+ATACACTAGTAATCCG-1 Sample4_Bender      78441         9624 0.005099374
+AAGCTAAAGGTACGTC-1 Sample4_Bender      76867         9135 2.115342084
+CAGTTATAGCCAGACT-1 Sample4_Bender      75591         9053 0.023812359
+TACCACAAGGGGATCA-1 Sample4_Bender      75503         9814 0.018542310
+ACAGAACAGCATATCG-1 Sample4_Bender      69761         9057 0.010034260
+TCAGAGGAGCGCCTTC-1 Sample4_Bender      66054         7546 0.003027826
+CATACCAAGTAACCTG-1 Sample4_Bender      66064         7473 0.016650521
+                   percent.rb     Method  Sample
+CATAGTTAGCTTCCTG-1  0.4521981 Cellbender Sample4
+ACTGCTAAGGGGCAAC-1  1.3943230 Cellbender Sample4
+CTGTAATAGCGGTCCA-1  0.5690128 Cellbender Sample4
+ATACACTAGTAATCCG-1  0.1606303 Cellbender Sample4
+AAGCTAAAGGTACGTC-1  4.2397908 Cellbender Sample4
+CAGTTATAGCCAGACT-1  0.5132886 Cellbender Sample4
+TACCACAAGGGGATCA-1  0.2052899 Cellbender Sample4
+ACAGAACAGCATATCG-1  0.1834836 Cellbender Sample4
+TCAGAGGAGCGCCTTC-1  1.4200503 Cellbender Sample4
+CATACCAAGTAACCTG-1  0.7235408 Cellbender Sample4</code></pre>
+<pre class="r"><code>############################### raw
+
+rawfiles[4]</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellranger_output/Sample4_filtered_feature_bc_matrix.h5&quot;</code></pre>
+<pre class="r"><code>raw.s4.counts &lt;- Read_CellBender_h5_Mat(rawfiles[4])
+raw.s4    &lt;- CreateSeuratObject(counts = raw.s4.counts, project = paste0(&quot;Sample4_raw&quot;))
+raw.s4[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(raw.s4, pattern = &quot;^MT-&quot;)
+raw.s4[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(raw.s4, pattern = &quot;^RP[SL]&quot;)
+
+raw.s4$Method &lt;- &quot;Raw&quot;
+raw.s4$Sample &lt;- &quot;Sample4&quot;
+raw.s4</code></pre>
+<pre><code>An object of class Seurat 
+38606 features across 1802 samples within 1 assay 
+Active assay: RNA (38606 features, 0 variable features)
+ 1 layer present: counts</code></pre>
+<pre class="r"><code>head(raw.s4)</code></pre>
+<pre><code>                    orig.ident nCount_RNA nFeature_RNA  percent.mt percent.rb
+AAACCAAAGCATCGAC-1 Sample4_raw       7351         2947 0.612161611  2.0133315
+AAACCAAAGTTAGTGT-1 Sample4_raw      41047         6767 0.077959412  0.1778449
+AAACGACAGAAGGTAC-1 Sample4_raw      20251         4636 0.019752111  0.4938028
+AAACGTAAGGTACACC-1 Sample4_raw      52140         7829 0.019179133  0.1630226
+AAACGTAAGTATGGCC-1 Sample4_raw      12413         4179 0.048336421  0.2739064
+AAAGCTAAGGGTAGGC-1 Sample4_raw      16192         4191 0.006175889  0.2346838
+AAAGCTAAGTGGGTTC-1 Sample4_raw      18826         5076 0.005311803  0.1699777
+AAAGGTCAGAAGGAAG-1 Sample4_raw      15646         4292 0.031957050  0.2109165
+AAAGGTCAGCGGTAGA-1 Sample4_raw      21350         4814 0.327868852  0.2154567
+AAAGGTCAGGCAATGG-1 Sample4_raw      20063         4881 0.019937198  0.1844191
+                   Method  Sample
+AAACCAAAGCATCGAC-1    Raw Sample4
+AAACCAAAGTTAGTGT-1    Raw Sample4
+AAACGACAGAAGGTAC-1    Raw Sample4
+AAACGTAAGGTACACC-1    Raw Sample4
+AAACGTAAGTATGGCC-1    Raw Sample4
+AAAGCTAAGGGTAGGC-1    Raw Sample4
+AAAGCTAAGTGGGTTC-1    Raw Sample4
+AAAGGTCAGAAGGAAG-1    Raw Sample4
+AAAGGTCAGCGGTAGA-1    Raw Sample4
+AAAGGTCAGGCAATGG-1    Raw Sample4</code></pre>
+</div>
+<div id="functions" class="section level1">
+<h1>Functions</h1>
+<pre class="r"><code>process_single_cell_pair &lt;- function(b_file, r_file, s_name) {
+
+  # bender object
+  counts_b &lt;- Read_CellBender_h5_Mat(b_file)
+  obj_b    &lt;- CreateSeuratObject(counts = counts_b, project = paste0(s_name, &quot;_Bender&quot;))
+  obj_b[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(obj_b, pattern = &quot;^MT-&quot;)
+  obj_b[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(obj_b, pattern = &quot;^RP[SL]&quot;)
+  
+  meta_b &lt;- obj_b@meta.data
+  meta_b$Method &lt;- &quot;Cellbender&quot;
+  meta_b$Sample &lt;- s_name
+  
+  # raw object
+  counts_r &lt;- Read10X_h5(r_file)
+  obj_r    &lt;- CreateSeuratObject(counts = counts_r, project = paste0(s_name, &quot;_raw&quot;))
+  obj_r[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(obj_r, pattern = &quot;^MT-&quot;)
+  obj_r[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(obj_r, pattern = &quot;^RP[SL]&quot;)
+  
+  meta_r &lt;- obj_r@meta.data
+  meta_r$Method &lt;- &quot;Raw&quot;
+  meta_r$Sample &lt;- s_name
+  
+  columns_to_keep &lt;- c(&quot;nCount_RNA&quot;, &quot;nFeature_RNA&quot;, &quot;percent.mt&quot;, &quot;percent.rb&quot;, &quot;Method&quot;, &quot;Sample&quot;)
+  combined_metadata &lt;- rbind(meta_b[, columns_to_keep], meta_r[, columns_to_keep])
+  
+  results &lt;- list(
+    bender_obj = obj_b,
+    raw_obj    = obj_r,
+    metadata   = combined_metadata
+  )
+  
+  return(results)
+}
+
+########################################################################
+
+
+generate_qc_plots &lt;- function(df, s_name) {
+  
+  # 1. Filter data for the specific sample
+  sample_df &lt;- df[df$Sample == s_name, ]
+  
+  # Plot
+  p1 &lt;- ggplot(sample_df, aes(x = Method, y = nCount_RNA, fill = Method)) +
+    geom_violin(alpha = 0.7) +
+    theme_classic() +
+    labs(title = &quot;nCount_RNA&quot;, x = NULL, y = NULL) + 
+    theme(legend.position = &quot;none&quot;)
+
+  p2 &lt;- ggplot(sample_df, aes(x = Method, y = nFeature_RNA, fill = Method)) +
+    geom_violin(alpha = 0.7) +
+    theme_classic() +
+    labs(title = &quot;nFeature_RNA&quot;, x = NULL, y = NULL) + 
+    theme(legend.position = &quot;none&quot;)
+
+  p3 &lt;- ggplot(sample_df, aes(x = Method, y = percent.mt, fill = Method)) +
+    geom_violin(alpha = 0.7) +
+    theme_classic() +
+    labs(title = &quot;percent.mt&quot;, x = NULL, y = NULL) + 
+    theme(legend.position = &quot;none&quot;)
+
+  p4 &lt;- ggplot(sample_df, aes(x = Method, y = percent.rb, fill = Method)) +
+    geom_violin(alpha = 0.7) +
+    theme_classic() +
+    labs(title = &quot;percent.rb&quot;, x = NULL, y = NULL) + 
+    theme(legend.position = &quot;none&quot;)
+
+  # patchwork
+  sample_grid &lt;- (p1 + p2) / (p3 + p4) + 
+    plot_annotation(
+      title = s_name, 
+      theme = theme(plot.title = element_text(size = 16, face = &quot;bold&quot;, hjust = 0.5))
+    )
+  
+  # Zoomed grid
+  p1_zoom &lt;- p1 + coord_cartesian(ylim = c(0, 60000))
+  p3_zoom &lt;- p3 + coord_cartesian(ylim = c(0, 5))
+  p4_zoom &lt;- p4 + coord_cartesian(ylim = c(0, 5))
+  
+  sample_grid_zoom &lt;- (p1_zoom + p2) / (p3_zoom + p4_zoom) + 
+    plot_annotation(
+      title = paste0(s_name, &quot; (Zoom)&quot;),
+      theme = theme(plot.title = element_text(size = 16, face = &quot;bold&quot;, hjust = 0.5))
+    )
+  
+  print(sample_grid)
+  print(sample_grid_zoom)
+}</code></pre>
+<pre class="r"><code>seurat_bender_list &lt;- list()
+seurat_raw_list    &lt;- list()
+metadata_qc_list   &lt;- list()</code></pre>
+<pre class="r"><code>sample_names &lt;- gsub(&quot;cellbender_output_|_filtered\\.h5&quot;, &quot;&quot;, basename(benderfiles))
+no.benderfiles &lt;- rawfiles
+all_metadata_list &lt;- list()
+
+for (i in seq_along(benderfiles)) {
+  
+  s_name &lt;- sample_names[i]
+  b_file &lt;- benderfiles[i]
+  
+  # Find the exact matching raw file
+  r_file &lt;- no.benderfiles[grep(s_name, basename(no.benderfiles))][1]
+  
+  # Safety check to prevent crashing on missing files
+  if (is.na(r_file) || length(r_file) == 0) {
+    warning(paste(&quot;Skipping: No raw file found for&quot;, s_name))
+    next
+  }
+  
+  # Process pair
+  res &lt;- process_single_cell_pair(b_file = b_file, r_file = r_file, s_name = s_name)
+  
+  df &lt;- res$metadata
+  all_metadata_list[[s_name]] &lt;- df
+  
+  # 
+  generate_qc_plots(df = df, s_name = s_name)
+  
+  rm(res, df)
+  gc()
+}</code></pre>
+<p><img src="figure/Magda_Samples.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/Magda_Samples.Rmd/unnamed-chunk-6-2.png" width="672" style="display: block; margin: auto;" /><img src="figure/Magda_Samples.Rmd/unnamed-chunk-6-3.png" width="672" style="display: block; margin: auto;" /><img src="figure/Magda_Samples.Rmd/unnamed-chunk-6-4.png" width="672" style="display: block; margin: auto;" /><img src="figure/Magda_Samples.Rmd/unnamed-chunk-6-5.png" width="672" style="display: block; margin: auto;" /><img src="figure/Magda_Samples.Rmd/unnamed-chunk-6-6.png" width="672" style="display: block; margin: auto;" /><img src="figure/Magda_Samples.Rmd/unnamed-chunk-6-7.png" width="672" style="display: block; margin: auto;" /><img src="figure/Magda_Samples.Rmd/unnamed-chunk-6-8.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># 3. Combine all individual dataframes into one master dataframe at the end
+master_compare_df &lt;- do.call(rbind, all_metadata_list)
+
+table(master_compare_df$Sample)</code></pre>
+<pre><code>
+Sample1 Sample2 Sample3 Sample4 
+   3914   32306   38122   28420 </code></pre>
+</div>
+<div id="comparing-cell-counts" class="section level1">
+<h1>Comparing cell counts</h1>
+<p>Sample 2-4 seems like something went wrong..</p>
+<pre class="r"><code>counts_matrix &lt;- table(master_compare_df$Sample, master_compare_df$Method)
+
+counts_wide &lt;- as.data.frame.matrix(counts_matrix)
+
+counts_wide$Sample &lt;- rownames(counts_wide)
+
+
+#################################################################
+
+
+ggplot(counts_wide, aes(x = Raw, y = Cellbender)) +
+  geom_abline(intercept = 0, slope = 1, color = &quot;grey50&quot;, size = 0.8) +
+  geom_point(color = &quot;#4682B4&quot;, size = 4, alpha = 0.9) +
+  
+  # Labels
+  geom_text_repel(aes(label = Sample), size = 3.5, fontface = &quot;bold&quot;, box.padding = 0.4) +
+  
+  # Layout styling
+  theme_classic() +
+  labs(
+    title = &quot;Cell Count Retention: Raw vs. Cellbender&quot;,
+    x = &quot;Raw Cell Count (Cellranger)&quot;,
+    y = &quot;Cellbender Cell Count&quot;
+  ) +
+  theme(
+    plot.title = element_text(face = &quot;bold&quot;, size = 14, hjust = 0.5),
+    plot.subtitle = element_text(size = 10, color = &quot;grey30&quot;, hjust = 0.5),
+    axis.title = element_text(face = &quot;bold&quot;, size = 11)
+  )</code></pre>
+<p><img src="figure/Magda_Samples.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="checking-corrupted-file-exp3_cmhef_tgf" class="section level1">
+<h1>Checking “corrupted” file? Exp3_CMHEF_TGF</h1>
+<pre class="r"><code>##################################################################### Sample 1
+path1 &lt;- &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Exp3_CMHEF_TGF_filtered.h5&quot;
+
+
+bender.s1.counts &lt;- Read_CellBender_h5_Mat(path1)
+bender.s1    &lt;- CreateSeuratObject(counts = bender.s1.counts, project = paste0(&quot;Exp3_CMHEF_TGF_Bender&quot;))
+bender.s1[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s1, pattern = &quot;^MT-&quot;)
+bender.s1[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(bender.s1, pattern = &quot;^RP[SL]&quot;)
+
+bender.s1$Method &lt;- &quot;Cellbender&quot;
+bender.s1$Sample &lt;- &quot;Exp3_CMHEF_TGF&quot;
+
+bender.s1</code></pre>
+<pre><code>An object of class Seurat 
+38606 features across 8049 samples within 1 assay 
+Active assay: RNA (38606 features, 0 variable features)
+ 1 layer present: counts</code></pre>
+<pre class="r"><code>head(bender.s1)</code></pre>
+<pre><code>                              orig.ident nCount_RNA nFeature_RNA percent.mt
+GTTACTTCAATCTATC-1 Exp3_CMHEF_TGF_Bender      91156        11131 0.08337356
+CAAGCTGCAGCACCTT-1 Exp3_CMHEF_TGF_Bender      90049        10351 0.14103433
+CCTGTCGCAGTTGCTC-1 Exp3_CMHEF_TGF_Bender      78898        10436 0.05703567
+ACTCACCCAGGTATCG-1 Exp3_CMHEF_TGF_Bender      75444         9992 0.03446265
+CCTCCAGCATTAGACA-1 Exp3_CMHEF_TGF_Bender      74039         9990 0.06483070
+TCTGCACCATCAAGGT-1 Exp3_CMHEF_TGF_Bender      70943         9845 0.08739411
+TCACTTGCAATGGGCC-1 Exp3_CMHEF_TGF_Bender      68197         9698 0.03372582
+ACTCATTCACTTGAGG-1 Exp3_CMHEF_TGF_Bender      67394         9870 0.15134878
+ACCGCAACATCACTCA-1 Exp3_CMHEF_TGF_Bender      67244         9825 0.09220153
+CACCTCGCAAGTAGCT-1 Exp3_CMHEF_TGF_Bender      64972         9742 0.53253709
+                   percent.rb     Method         Sample
+GTTACTTCAATCTATC-1  1.4853657 Cellbender Exp3_CMHEF_TGF
+CAAGCTGCAGCACCTT-1  0.4575287 Cellbender Exp3_CMHEF_TGF
+CCTGTCGCAGTTGCTC-1  2.2243910 Cellbender Exp3_CMHEF_TGF
+ACTCACCCAGGTATCG-1  0.7369705 Cellbender Exp3_CMHEF_TGF
+CCTCCAGCATTAGACA-1  1.0724078 Cellbender Exp3_CMHEF_TGF
+TCTGCACCATCAAGGT-1  2.3920612 Cellbender Exp3_CMHEF_TGF
+TCACTTGCAATGGGCC-1  1.1716058 Cellbender Exp3_CMHEF_TGF
+ACTCATTCACTTGAGG-1  2.5937027 Cellbender Exp3_CMHEF_TGF
+ACCGCAACATCACTCA-1  0.8640176 Cellbender Exp3_CMHEF_TGF
+CACCTCGCAAGTAGCT-1  3.3783784 Cellbender Exp3_CMHEF_TGF</code></pre>
+<pre class="r"><code>############################### raw
+
+path2 &lt;- &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellranger_output/Exp3_CMHEF_TGF_filtered_feature_bc_matrix.h5&quot;
+
+
+raw.s1.counts &lt;- Read_CellBender_h5_Mat(path2)
+raw.s1    &lt;- CreateSeuratObject(counts = raw.s1.counts, project = paste0(&quot;Exp3_CMHEF_TGF_raw&quot;))
+raw.s1[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(raw.s1, pattern = &quot;^MT-&quot;)
+raw.s1[[&quot;percent.rb&quot;]] &lt;- PercentageFeatureSet(raw.s1, pattern = &quot;^RP[SL]&quot;)
+
+raw.s1$Method &lt;- &quot;Raw&quot;
+raw.s1$Sample &lt;- &quot;Sample1&quot;
+
+raw.s1</code></pre>
+<pre><code>An object of class Seurat 
+38606 features across 8176 samples within 1 assay 
+Active assay: RNA (38606 features, 0 variable features)
+ 1 layer present: counts</code></pre>
+<pre class="r"><code>head(raw.s1)</code></pre>
+<pre><code>                           orig.ident nCount_RNA nFeature_RNA percent.mt
+AAACCCGCAATTCGTT-1 Exp3_CMHEF_TGF_raw       8114         3602 0.03697313
+AAACCCGCACATTCGC-1 Exp3_CMHEF_TGF_raw       6365         2597 0.03142184
+AAACCCGCATCCGTAC-1 Exp3_CMHEF_TGF_raw        546          421 0.00000000
+AAACCCGCATGGATCG-1 Exp3_CMHEF_TGF_raw       2466         1403 2.43309002
+AAACGGACAAGTGGAA-1 Exp3_CMHEF_TGF_raw       5284         2399 0.26495079
+AAACGGACACATTGAA-1 Exp3_CMHEF_TGF_raw       9443         3549 0.02117971
+AAACGGACACCATCGT-1 Exp3_CMHEF_TGF_raw       4548         2167 0.06596306
+AAACGGACACTTAGGG-1 Exp3_CMHEF_TGF_raw       8524         3488 0.03519474
+AAACGGACATAACGAC-1 Exp3_CMHEF_TGF_raw       7524         3035 0.09303562
+AAACGGACATCAAGGT-1 Exp3_CMHEF_TGF_raw      14895         4623 0.04699564
+                   percent.rb Method  Sample
+AAACCCGCAATTCGTT-1  1.4049790    Raw Sample1
+AAACCCGCACATTCGC-1  0.8169678    Raw Sample1
+AAACCCGCATCCGTAC-1  7.1428571    Raw Sample1
+AAACCCGCATGGATCG-1 12.0032441    Raw Sample1
+AAACGGACAAGTGGAA-1  1.2679788    Raw Sample1
+AAACGGACACATTGAA-1  0.6036217    Raw Sample1
+AAACGGACACCATCGT-1  0.7475814    Raw Sample1
+AAACGGACACTTAGGG-1  1.4547161    Raw Sample1
+AAACGGACATAACGAC-1  2.3258905    Raw Sample1
+AAACGGACATCAAGGT-1  0.4900973    Raw Sample1</code></pre>
+<pre class="r"><code>################################################################# merge
+
+Exp3_CMHEF_TGF &lt;- merge(
+  x = bender.s1,
+  y = raw.s1,
+  add.cell.ids = c(&quot;S1_B&quot;, &quot;S1_R&quot;)
+)</code></pre>
+</div>
+<div id="exp3_cmhef_tgf-plots" class="section level1">
+<h1>Exp3_CMHEF_TGF Plots</h1>
+<p>It looks almost the same? only 127 droplets removed?</p>
+<pre class="r"><code>p1 &lt;- VlnPlot(
+  object = Exp3_CMHEF_TGF,
+  features = &quot;nCount_RNA&quot;,
+  group.by = &quot;Sample&quot;,   
+  split.by = &quot;Method&quot;, 
+  pt.size = 0,
+  y.max = 35000, 
+  raster = FALSE
+)</code></pre>
+<pre><code>The default behaviour of split.by has changed.
+Separate violin plots are now plotted side-by-side.
+To restore the old behaviour of a single split violin,
+set split.plot = TRUE.
+      
+This message will be shown once per session.</code></pre>
+<pre class="r"><code>p2 &lt;- VlnPlot(
+  object = Exp3_CMHEF_TGF,
+  features = &quot;nFeature_RNA&quot;,
+  group.by = &quot;Sample&quot;,   
+  split.by = &quot;Method&quot;,   
+  pt.size = 0, 
+  raster = FALSE
+)
+
+p3 &lt;- VlnPlot(
+  object = Exp3_CMHEF_TGF,
+  features = &quot;percent.mt&quot;,
+  group.by = &quot;Sample&quot;,   
+  split.by = &quot;Method&quot;,   
+  pt.size = 0, 
+  y.max = 5,
+  raster = FALSE             
+)
+
+p4 &lt;- VlnPlot(
+  object = Exp3_CMHEF_TGF,
+  features = &quot;percent.rb&quot;,
+  group.by = &quot;Sample&quot;,   
+  split.by = &quot;Method&quot;,   
+  pt.size = 0,
+  y.max = 10,
+  raster = FALSE
+)
+
+p1</code></pre>
+<p><img src="figure/Magda_Samples.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p2</code></pre>
+<p><img src="figure/Magda_Samples.Rmd/unnamed-chunk-9-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p3</code></pre>
+<p><img src="figure/Magda_Samples.Rmd/unnamed-chunk-9-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p4</code></pre>
+<p><img src="figure/Magda_Samples.Rmd/unnamed-chunk-9-4.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.5.2 (2025-10-31)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 24.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+time zone: Etc/UTC
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] ggrepel_0.9.6      cowplot_1.2.0      patchwork_1.3.2    scCustomize_3.2.4 
+ [5] hdf5r_1.3.12       Seurat_5.4.0       SeuratObject_5.3.0 sp_2.2-0          
+ [9] ggplot2_4.0.0      dplyr_1.1.4        readr_2.1.5        workflowr_1.7.2   
+
+loaded via a namespace (and not attached):
+  [1] RColorBrewer_1.1-3     shape_1.4.6.1          rstudioapi_0.17.1     
+  [4] jsonlite_2.0.0         magrittr_2.0.4         ggbeeswarm_0.7.3      
+  [7] spatstat.utils_3.2-0   farver_2.1.2           rmarkdown_2.30        
+ [10] GlobalOptions_0.1.3    fs_2.0.1               vctrs_0.6.5           
+ [13] ROCR_1.0-12            spatstat.explore_3.5-3 paletteer_1.7.0       
+ [16] janitor_2.2.1          forcats_1.0.1          htmltools_0.5.8.1     
+ [19] sass_0.4.10            sctransform_0.4.3      parallelly_1.46.1     
+ [22] KernSmooth_2.23-26     bslib_0.9.0            htmlwidgets_1.6.4     
+ [25] ica_1.0-3              plyr_1.8.9             lubridate_1.9.4       
+ [28] plotly_4.11.0          zoo_1.8-14             cachem_1.1.0          
+ [31] whisker_0.4.1          igraph_2.2.1           mime_0.13             
+ [34] lifecycle_1.0.5        pkgconfig_2.0.3        Matrix_1.7-4          
+ [37] R6_2.6.1               fastmap_1.2.0          snakecase_0.11.1      
+ [40] fitdistrplus_1.2-5     future_1.69.0          shiny_1.11.1          
+ [43] digest_0.6.37          colorspace_2.1-2       rematch2_2.1.2        
+ [46] ps_1.9.1               rprojroot_2.1.1        tensor_1.5.1          
+ [49] RSpectra_0.16-2        irlba_2.3.5.1          labeling_0.4.3        
+ [52] progressr_0.18.0       timechange_0.3.0       spatstat.sparse_3.1-0 
+ [55] httr_1.4.7             polyclip_1.10-7        abind_1.4-8           
+ [58] compiler_4.5.2         bit64_4.6.0-1          withr_3.0.2           
+ [61] S7_0.2.0               fastDummies_1.7.5      MASS_7.3-65           
+ [64] tools_4.5.2            vipor_0.4.7            lmtest_0.9-40         
+ [67] otel_0.2.0             beeswarm_0.4.0         httpuv_1.6.16         
+ [70] future.apply_1.20.1    goftest_1.2-3          glue_1.8.0            
+ [73] callr_3.7.6            nlme_3.1-168           promises_1.4.0        
+ [76] grid_4.5.2             Rtsne_0.17             getPass_0.2-4         
+ [79] cluster_2.1.8.1        reshape2_1.4.5         generics_0.1.4        
+ [82] gtable_0.3.6           spatstat.data_3.1-9    tzdb_0.5.0            
+ [85] tidyr_1.3.1            data.table_1.17.8      hms_1.1.4             
+ [88] spatstat.geom_3.6-0    RcppAnnoy_0.0.23       RANN_2.6.2            
+ [91] pillar_1.11.1          stringr_1.5.2          ggprism_1.0.7         
+ [94] spam_2.11-3            RcppHNSW_0.6.0         later_1.4.4           
+ [97] circlize_0.4.17        splines_4.5.2          lattice_0.22-7        
+[100] bit_4.6.0              survival_3.8-3         deldir_2.0-4          
+[103] tidyselect_1.2.1       miniUI_0.1.2           pbapply_1.7-4         
+[106] knitr_1.50             git2r_0.36.2           gridExtra_2.3         
+[109] scattermore_1.2        xfun_0.58              matrixStats_1.5.0     
+[112] stringi_1.8.7          lazyeval_0.2.2         yaml_2.3.10           
+[115] evaluate_1.0.5         codetools_0.2-20       tibble_3.3.0          
+[118] cli_3.6.5              uwot_0.2.4             xtable_1.8-4          
+[121] reticulate_1.44.1      processx_3.8.6         jquerylib_0.1.4       
+[124] Rcpp_1.1.0             mcprogress_0.1.1       globals_0.18.0        
+[127] spatstat.random_3.4-2  png_0.1-8              ggrastr_1.0.2         
+[130] spatstat.univar_3.1-4  parallel_4.5.2         dotCall64_1.2         
+[133] listenv_0.10.0         viridisLite_0.4.2      scales_1.4.0          
+[136] ggridges_0.5.7         purrr_1.1.0            rlang_1.1.7           </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
