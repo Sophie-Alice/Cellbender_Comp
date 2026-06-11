@@ -355,6 +355,8 @@ ggplot(counts_wide, aes(x = Raw, y = Cellbender)) +
 
 # Checking "corrupted" file? Exp3_CMHEF_TGF
 
+When importing it from Sophie Shares it works
+
 ```{r error=FALSE, warning=FALSE}
 ##################################################################### Sample 1
 path1 <- "/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Exp3_CMHEF_TGF_filtered.h5"
@@ -383,7 +385,7 @@ raw.s1[["percent.mt"]] <- PercentageFeatureSet(raw.s1, pattern = "^MT-")
 raw.s1[["percent.rb"]] <- PercentageFeatureSet(raw.s1, pattern = "^RP[SL]")
 
 raw.s1$Method <- "Raw"
-raw.s1$Sample <- "Sample1"
+raw.s1$Sample <- "Exp3_CMHEF_TGF"
 
 raw.s1
 head(raw.s1)
@@ -449,9 +451,62 @@ p3
 p4
 ```
 
+## Improting the "Corrupted" file from shares / G
+
+--> CellRanger file seems corrupted
+
 ```{r error=FALSE, warning=FALSE}
 
+##################################################################### Sample 1
+path1 <- "//shares/rheumatologie.usz/Gino/Laura/Cellbender_output/cellbender_output_Exp3_CMHEF_TGF_filtered.h5"
+
+
+bender.s1.counts <- Read_CellBender_h5_Mat(path1)
+bender.s1    <- CreateSeuratObject(counts = bender.s1.counts, project = paste0("Exp3_CMHEF_TGF_Bender"))
+bender.s1[["percent.mt"]] <- PercentageFeatureSet(bender.s1, pattern = "^MT-")
+bender.s1[["percent.rb"]] <- PercentageFeatureSet(bender.s1, pattern = "^RP[SL]")
+
+bender.s1$Method <- "Cellbender"
+bender.s1$Sample <- "Exp3_CMHEF_TGF"
+
+head(bender.s1)
+
+bender.s1
+
+VlnPlot(
+  object = bender.s1,
+  features = "nCount_RNA",
+  pt.size = 0,
+  y.max = 35000, 
+  raster = FALSE
+)
+
+VlnPlot(
+  object = bender.s1,
+  features = "nFeature_RNA",
+  pt.size = 0, 
+  raster = FALSE
+)
+
+############################### raw
+
+#path2 <- "/shares/rheumatologie.usz/Gino/Laura/Cellranger_output/Exp3_CMHEF_TGF_filtered_feature_bc_matrix.h5"
+
+
+#raw.s1.counts <- Read_CellBender_h5_Mat(path2)
+#raw.s1    <- CreateSeuratObject(counts = raw.s1.counts, project = paste0("Exp3_CMHEF_TGF_raw"))
+#raw.s1[["percent.mt"]] <- PercentageFeatureSet(raw.s1, pattern = "^MT-")
+#raw.s1[["percent.rb"]] <- PercentageFeatureSet(raw.s1, pattern = "^RP[SL]")
+
+#raw.s1$Method <- "Raw"
+#raw.s1$Sample <- "Exp3_CMHEF_TGF"
+
+#raw.s1
+#head(raw.s1)
+
+
 ```
+
 
 ```{r error=FALSE, warning=FALSE}
 
