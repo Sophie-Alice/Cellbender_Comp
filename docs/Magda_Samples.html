@@ -513,15 +513,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSophieAliceCellbenderComptreeffdc5691119ca6b0e9f0ab0dc2d6653810e97838targetblankffdc569a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSophieAliceCellbenderComptree7bd8c0000c9f479592e9c0347f4125968904e7c7targetblank7bd8c00a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/Sophie-Alice/Cellbender_Comp/tree/ffdc5691119ca6b0e9f0ab0dc2d6653810e97838" target="_blank">ffdc569</a>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/tree/7bd8c0000c9f479592e9c0347f4125968904e7c7" target="_blank">7bd8c00</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomSophieAliceCellbenderComptreeffdc5691119ca6b0e9f0ab0dc2d6653810e97838targetblankffdc569a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomSophieAliceCellbenderComptree7bd8c0000c9f479592e9c0347f4125968904e7c7targetblank7bd8c00a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -531,7 +531,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/Sophie-Alice/Cellbender_Comp/tree/ffdc5691119ca6b0e9f0ab0dc2d6653810e97838" target="_blank">ffdc569</a>.
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/tree/7bd8c0000c9f479592e9c0347f4125968904e7c7" target="_blank">7bd8c00</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -589,6 +589,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/7bd8c0000c9f479592e9c0347f4125968904e7c7/analysis/Magda_Samples.Rmd" target="_blank">7bd8c00</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-11
+</td>
+<td>
+Rerunning the 2nd Cellbender Run
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/Sophie-Alice/Cellbender_Comp/23428688350d8cf05ddefd9e98b031862df4f29c/docs/Magda_Samples.html" target="_blank">2342868</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-11
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -652,8 +686,8 @@ Updates
 <pre class="r"><code>rm(list=ls())
 gc()</code></pre>
 <pre><code>          used (Mb) gc trigger (Mb) max used (Mb)
-Ncells  894447 47.8    1720175 91.9  1315225 70.3
-Vcells 1569255 12.0    8388608 64.0  2320292 17.8</code></pre>
+Ncells  894451 47.8    1720187 91.9  1315225 70.3
+Vcells 1569390 12.0    8388608 64.0  2320292 17.8</code></pre>
 <pre class="r"><code>library(readr)
 library(dplyr)
 library(ggplot2)
@@ -667,7 +701,7 @@ library(workflowr)</code></pre>
 </div>
 <div id="get-directory" class="section level1">
 <h1>Get directory</h1>
-<pre class="r"><code>Cellbender.master &lt;- &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output&quot;
+<pre class="r"><code>Cellbender.master &lt;- &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output_2ndrun&quot;
 
 benderfiles &lt;- list.files(
   path = Cellbender.master, 
@@ -689,7 +723,7 @@ rawfiles &lt;- list.files(
 <h1>individual import</h1>
 <pre class="r"><code>##################################################################### Sample 1
 benderfiles[1]</code></pre>
-<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Sample1_filtered.h5&quot;</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output_2ndrun/cellbender_output_Sample1_filtered.h5&quot;</code></pre>
 <pre class="r"><code>bender.s1.counts &lt;- Read_CellBender_h5_Mat(benderfiles[1])
 bender.s1    &lt;- CreateSeuratObject(counts = bender.s1.counts, project = paste0(&quot;Sample1_Bender&quot;))
 bender.s1[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s1, pattern = &quot;^MT-&quot;)
@@ -700,27 +734,27 @@ bender.s1$Sample &lt;- &quot;Sample1&quot;
 
 head(bender.s1)</code></pre>
 <pre><code>                       orig.ident nCount_RNA nFeature_RNA  percent.mt
-AACGTAGGTGACTCCA-1 Sample1_Bender     125705        12344 0.038184639
-CCTCCTGGTGCAAGGT-1 Sample1_Bender     102148         9759 0.025453264
-CTAGCATGTAGGCGTG-1 Sample1_Bender      89164         9899 0.052711857
-CCGGCATGTTATGTCA-1 Sample1_Bender      86323        10595 0.040545393
-CAGGGATGTTAAGTCC-1 Sample1_Bender      83524         9846 0.282553518
-ACGGGATGTTCGTGCA-1 Sample1_Bender      82115        10155 0.004871217
-CCCTGTTGTGAGAGTC-1 Sample1_Bender      81692        10055 0.001224110
-AACGGTAGTGCGCATC-1 Sample1_Bender      80414        10969 0.054716840
-TCTCTATGTTAGACAG-1 Sample1_Bender      76026         8801 0.000000000
-ATTACTGGTTGTCCCT-1 Sample1_Bender      75240        10143 0.203349282
+AACGTAGGTGACTCCA-1 Sample1_Bender     125729        12345 0.038972711
+CCTCCTGGTGCAAGGT-1 Sample1_Bender     102184         9762 0.027401550
+CTAGCATGTAGGCGTG-1 Sample1_Bender      89189         9895 0.062788012
+CCGGCATGTTATGTCA-1 Sample1_Bender      86371        10604 0.041680657
+CAGGGATGTTAAGTCC-1 Sample1_Bender      83571         9850 0.284787785
+ACGGGATGTTCGTGCA-1 Sample1_Bender      82122        10145 0.004870802
+CCCTGTTGTGAGAGTC-1 Sample1_Bender      81714        10055 0.001223781
+AACGGTAGTGCGCATC-1 Sample1_Bender      80459        10979 0.058414845
+TCTCTATGTTAGACAG-1 Sample1_Bender      76040         8795 0.001315097
+ATTACTGGTTGTCCCT-1 Sample1_Bender      75242        10123 0.206001967
                    percent.rb     Method  Sample
-AACGTAGGTGACTCCA-1  0.4025297 Cellbender Sample1
-CCTCCTGGTGCAAGGT-1  0.1869836 Cellbender Sample1
-CTAGCATGTAGGCGTG-1  0.2702885 Cellbender Sample1
-CCGGCATGTTATGTCA-1  0.3081450 Cellbender Sample1
-CAGGGATGTTAAGTCC-1  1.1685264 Cellbender Sample1
-ACGGGATGTTCGTGCA-1  0.3422030 Cellbender Sample1
-CCCTGTTGTGAGAGTC-1  0.1701513 Cellbender Sample1
-AACGGTAGTGCGCATC-1  0.4252991 Cellbender Sample1
-TCTCTATGTTAGACAG-1  0.1775708 Cellbender Sample1
-ATTACTGGTTGTCCCT-1  0.6844763 Cellbender Sample1</code></pre>
+AACGTAGGTGACTCCA-1  0.4024529 Cellbender Sample1
+CCTCCTGGTGCAAGGT-1  0.1859391 Cellbender Sample1
+CTAGCATGTAGGCGTG-1  0.2702127 Cellbender Sample1
+CCGGCATGTTATGTCA-1  0.3079737 Cellbender Sample1
+CAGGGATGTTAAGTCC-1  1.1678692 Cellbender Sample1
+ACGGGATGTTCGTGCA-1  0.3421738 Cellbender Sample1
+CCCTGTTGTGAGAGTC-1  0.1688817 Cellbender Sample1
+AACGGTAGTGCGCATC-1  0.4250612 Cellbender Sample1
+TCTCTATGTTAGACAG-1  0.1775381 Cellbender Sample1
+ATTACTGGTTGTCCCT-1  0.6844581 Cellbender Sample1</code></pre>
 <pre class="r"><code>############################### raw
 
 rawfiles[1]</code></pre>
@@ -759,7 +793,7 @@ AAACTCCGTTGGACCC-1    Raw Sample1</code></pre>
 <pre class="r"><code>##################################################################### Sample 2
 
 benderfiles[2]</code></pre>
-<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Sample2_filtered.h5&quot;</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output_2ndrun/cellbender_output_Sample2_filtered.h5&quot;</code></pre>
 <pre class="r"><code>bender.s2.counts &lt;- Read_CellBender_h5_Mat(benderfiles[2])
 bender.s2    &lt;- CreateSeuratObject(counts = bender.s2.counts, project = paste0(&quot;Sample2_Bender&quot;))
 bender.s2[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s2, pattern = &quot;^MT-&quot;)
@@ -770,27 +804,27 @@ bender.s2$Sample &lt;- &quot;Sample2&quot;
 
 head(bender.s2)</code></pre>
 <pre><code>                       orig.ident nCount_RNA nFeature_RNA  percent.mt
-CTGCCATCATTAACTC-1 Sample2_Bender     121828        10628 0.311915159
-GTCACCTCATAGGTTA-1 Sample2_Bender      78207         8964 0.008950605
-CAGTCCTCAGGATTCG-1 Sample2_Bender      80964         9925 0.007410701
-GGAAAGCCACTAATGA-1 Sample2_Bender      74139         6919 0.010790542
-CCGAAATCAGTTAATG-1 Sample2_Bender      73658         9873 0.080099921
-CCACCTGCATTAGTAG-1 Sample2_Bender      71664         8949 0.011163206
-GGAGAACCATGCAGAT-1 Sample2_Bender      71519         9476 0.184566339
-ATATCCTCATTCGGGA-1 Sample2_Bender      67513         8623 0.005924785
-CCTCGATCAGCCATGA-1 Sample2_Bender      68059         9046 0.004407940
-GCGTTTCCAATCCCGT-1 Sample2_Bender      66924         8556 0.025401948
+CTGCCATCATTAACTC-1 Sample2_Bender     121628        10614 0.308317164
+CAGTCCTCAGGATTCG-1 Sample2_Bender      80814         9921 0.002474819
+GTCACCTCATAGGTTA-1 Sample2_Bender      78026         8937 0.000000000
+GGAAAGCCACTAATGA-1 Sample2_Bender      73978         6913 0.010814026
+CCGAAATCAGTTAATG-1 Sample2_Bender      73349         9827 0.051807114
+CCACCTGCATTAGTAG-1 Sample2_Bender      71491         8926 0.000000000
+GGAGAACCATGCAGAT-1 Sample2_Bender      71106         9424 0.174387534
+TCCTCTTCATGACTCC-1 Sample2_Bender      67986         9499 0.004412673
+CCTCGATCAGCCATGA-1 Sample2_Bender      67877         9027 0.000000000
+ATATCCTCATTCGGGA-1 Sample2_Bender      67337         8598 0.000000000
                    percent.rb     Method  Sample
-CTGCCATCATTAACTC-1  1.2353482 Cellbender Sample2
-GTCACCTCATAGGTTA-1  0.1969133 Cellbender Sample2
-CAGTCCTCAGGATTCG-1  0.1815622 Cellbender Sample2
-GGAAAGCCACTAATGA-1  0.1146495 Cellbender Sample2
-CCGAAATCAGTTAATG-1  0.2131472 Cellbender Sample2
-CCACCTGCATTAGTAG-1  0.1367493 Cellbender Sample2
-GGAGAACCATGCAGAT-1  0.7676282 Cellbender Sample2
-ATATCCTCATTCGGGA-1  0.1407136 Cellbender Sample2
-CCTCGATCAGCCATGA-1  0.2468446 Cellbender Sample2
-GCGTTTCCAATCCCGT-1  0.1748252 Cellbender Sample2</code></pre>
+CTGCCATCATTAACTC-1  1.2373796 Cellbender Sample2
+CAGTCCTCAGGATTCG-1  0.1818992 Cellbender Sample2
+GTCACCTCATAGGTTA-1  0.1960885 Cellbender Sample2
+GGAAAGCCACTAATGA-1  0.1148990 Cellbender Sample2
+CCGAAATCAGTTAATG-1  0.2126818 Cellbender Sample2
+CCACCTGCATTAGTAG-1  0.1370802 Cellbender Sample2
+GGAGAACCATGCAGAT-1  0.7720867 Cellbender Sample2
+TCCTCTTCATGACTCC-1  0.2632895 Cellbender Sample2
+CCTCGATCAGCCATGA-1  0.2460333 Cellbender Sample2
+ATATCCTCATTCGGGA-1  0.1410814 Cellbender Sample2</code></pre>
 <pre class="r"><code>############################### raw
 
 rawfiles[2]</code></pre>
@@ -829,7 +863,7 @@ AAAGCCTCAACTGTAA-1    Raw Sample2</code></pre>
 <pre class="r"><code>##################################################################### Sample 3
 
 benderfiles[3]</code></pre>
-<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Sample3_filtered.h5&quot;</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output_2ndrun/cellbender_output_Sample3_filtered.h5&quot;</code></pre>
 <pre class="r"><code>bender.s3.counts &lt;- Read_CellBender_h5_Mat(benderfiles[3])
 bender.s3    &lt;- CreateSeuratObject(counts = bender.s3.counts, project = paste0(&quot;Sample3_Bender&quot;))
 bender.s3[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s3, pattern = &quot;^MT-&quot;)
@@ -840,27 +874,27 @@ bender.s3$Sample &lt;- &quot;Sample3&quot;
 
 head(bender.s3)</code></pre>
 <pre><code>                       orig.ident nCount_RNA nFeature_RNA  percent.mt
-CATTGGATCCATAGAT-1 Sample3_Bender     122208        10988 0.010637601
-AGAGTAATCATGCGCG-1 Sample3_Bender     113907        11654 0.057942005
-TACATCCTCCAACTGA-1 Sample3_Bender     109396        10631 0.147171743
-GTATCCTTCGATCCGG-1 Sample3_Bender     111475         9694 0.256559767
-CTTGCCATCCAGGTAC-1 Sample3_Bender     107083        10253 1.420393527
-AAGTCCATCCGGTTGG-1 Sample3_Bender      98460        10573 0.078204347
-CTTCGGCTCGCGTCCT-1 Sample3_Bender      94171        10466 0.048847310
-CCGAATATCGTTAGGC-1 Sample3_Bender      86359        10197 0.040528492
-GTGTTAGTCGCTAGGT-1 Sample3_Bender      83284         9435 0.009605687
-AGAAGGTTCCCATATC-1 Sample3_Bender      79987         9425 0.018753047
+CATTGGATCCATAGAT-1 Sample3_Bender     122022        10971 0.005736670
+AGAGTAATCATGCGCG-1 Sample3_Bender     113742        11654 0.053630145
+GTATCCTTCGATCCGG-1 Sample3_Bender     111311         9684 0.253344234
+TACATCCTCCAACTGA-1 Sample3_Bender     109133        10599 0.138363282
+CTTGCCATCCAGGTAC-1 Sample3_Bender     106923        10248 1.418777999
+AAGTCCATCCGGTTGG-1 Sample3_Bender      98294        10573 0.072232283
+CTTCGGCTCGCGTCCT-1 Sample3_Bender      93963        10443 0.037248704
+CCGAATATCGTTAGGC-1 Sample3_Bender      86171        10177 0.027851597
+GTGTTAGTCGCTAGGT-1 Sample3_Bender      83115         9418 0.008422066
+AGAAGGTTCCCATATC-1 Sample3_Bender      79781         9391 0.011280881
                    percent.rb     Method  Sample
-CATTGGATCCATAGAT-1  0.1816575 Cellbender Sample3
-AGAGTAATCATGCGCG-1  0.2835647 Cellbender Sample3
-TACATCCTCCAACTGA-1  0.2970858 Cellbender Sample3
-GTATCCTTCGATCCGG-1  1.3841669 Cellbender Sample3
-CTTGCCATCCAGGTAC-1  1.3652961 Cellbender Sample3
-AAGTCCATCCGGTTGG-1  0.2315661 Cellbender Sample3
-CTTCGGCTCGCGTCCT-1  0.2729078 Cellbender Sample3
-CCGAATATCGTTAGGC-1  0.2512766 Cellbender Sample3
-GTGTTAGTCGCTAGGT-1  0.1909130 Cellbender Sample3
-AGAAGGTTCCCATATC-1  0.2125345 Cellbender Sample3</code></pre>
+CATTGGATCCATAGAT-1  0.1811149 Cellbender Sample3
+AGAGTAATCATGCGCG-1  0.2839760 Cellbender Sample3
+GTATCCTTCGATCCGG-1  1.3862062 Cellbender Sample3
+TACATCCTCCAACTGA-1  0.2959691 Cellbender Sample3
+CTTGCCATCCAGGTAC-1  1.3673391 Cellbender Sample3
+AAGTCCATCCGGTTGG-1  0.2319572 Cellbender Sample3
+CTTCGGCTCGCGTCCT-1  0.2724477 Cellbender Sample3
+CCGAATATCGTTAGGC-1  0.2518249 Cellbender Sample3
+GTGTTAGTCGCTAGGT-1  0.1913012 Cellbender Sample3
+AGAAGGTTCCCATATC-1  0.2130833 Cellbender Sample3</code></pre>
 <pre class="r"><code>############################### raw
 
 rawfiles[3]</code></pre>
@@ -899,7 +933,7 @@ AAACGGGTCCGCCAAG-1    Raw Sample3</code></pre>
 <pre class="r"><code>##################################################################### Sample 4
 
 benderfiles[4]</code></pre>
-<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output/cellbender_output_Sample4_filtered.h5&quot;</code></pre>
+<pre><code>[1] &quot;/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output_2ndrun/cellbender_output_Sample4_filtered.h5&quot;</code></pre>
 <pre class="r"><code>bender.s4.counts &lt;- Read_CellBender_h5_Mat(benderfiles[4])
 bender.s4    &lt;- CreateSeuratObject(counts = bender.s4.counts, project = paste0(&quot;Sample4_Bender&quot;))
 bender.s4[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(bender.s4, pattern = &quot;^MT-&quot;)
@@ -909,32 +943,32 @@ bender.s4$Method &lt;- &quot;Cellbender&quot;
 bender.s4$Sample &lt;- &quot;Sample4&quot;
 bender.s4</code></pre>
 <pre><code>An object of class Seurat 
-38606 features across 26618 samples within 1 assay 
+38606 features across 1480 samples within 1 assay 
 Active assay: RNA (38606 features, 0 variable features)
  1 layer present: counts</code></pre>
 <pre class="r"><code>head(bender.s4)</code></pre>
 <pre><code>                       orig.ident nCount_RNA nFeature_RNA  percent.mt
-CATAGTTAGCTTCCTG-1 Sample4_Bender     113667        10823 0.005278577
-ACTGCTAAGGGGCAAC-1 Sample4_Bender      90223         9327 0.007758554
-CTGTAATAGCGGTCCA-1 Sample4_Bender      81369         9925 0.058990525
-ATACACTAGTAATCCG-1 Sample4_Bender      78441         9624 0.005099374
-AAGCTAAAGGTACGTC-1 Sample4_Bender      76867         9135 2.115342084
-CAGTTATAGCCAGACT-1 Sample4_Bender      75591         9053 0.023812359
-TACCACAAGGGGATCA-1 Sample4_Bender      75503         9814 0.018542310
-ACAGAACAGCATATCG-1 Sample4_Bender      69761         9057 0.010034260
-TCAGAGGAGCGCCTTC-1 Sample4_Bender      66054         7546 0.003027826
-CATACCAAGTAACCTG-1 Sample4_Bender      66064         7473 0.016650521
+CATAGTTAGCTTCCTG-1 Sample4_Bender     113487        10807 0.004405791
+ACTGCTAAGGGGCAAC-1 Sample4_Bender      90067         9318 0.006661707
+CTGTAATAGCGGTCCA-1 Sample4_Bender      81204         9914 0.055415989
+ATACACTAGTAATCCG-1 Sample4_Bender      78259         9622 0.002555617
+AAGCTAAAGGTACGTC-1 Sample4_Bender      76653         9123 2.118638540
+CAGTTATAGCCAGACT-1 Sample4_Bender      75443         9051 0.019882560
+TACCACAAGGGGATCA-1 Sample4_Bender      75320         9811 0.013276686
+ACAGAACAGCATATCG-1 Sample4_Bender      69586         9038 0.004311212
+CATACCAAGTAACCTG-1 Sample4_Bender      65871         7448 0.013663069
+TCAGAGGAGCGCCTTC-1 Sample4_Bender      65896         7533 0.001517543
                    percent.rb     Method  Sample
-CATAGTTAGCTTCCTG-1  0.4521981 Cellbender Sample4
-ACTGCTAAGGGGCAAC-1  1.3943230 Cellbender Sample4
-CTGTAATAGCGGTCCA-1  0.5690128 Cellbender Sample4
-ATACACTAGTAATCCG-1  0.1606303 Cellbender Sample4
-AAGCTAAAGGTACGTC-1  4.2397908 Cellbender Sample4
-CAGTTATAGCCAGACT-1  0.5132886 Cellbender Sample4
-TACCACAAGGGGATCA-1  0.2052899 Cellbender Sample4
-ACAGAACAGCATATCG-1  0.1834836 Cellbender Sample4
-TCAGAGGAGCGCCTTC-1  1.4200503 Cellbender Sample4
-CATACCAAGTAACCTG-1  0.7235408 Cellbender Sample4</code></pre>
+CATAGTTAGCTTCCTG-1  0.4529153 Cellbender Sample4
+ACTGCTAAGGGGCAAC-1  1.3967380 Cellbender Sample4
+CTGTAATAGCGGTCCA-1  0.5701690 Cellbender Sample4
+ATACACTAGTAATCCG-1  0.1610038 Cellbender Sample4
+AAGCTAAAGGTACGTC-1  4.2516275 Cellbender Sample4
+CAGTTATAGCCAGACT-1  0.5142956 Cellbender Sample4
+TACCACAAGGGGATCA-1  0.2057886 Cellbender Sample4
+ACAGAACAGCATATCG-1  0.1839450 Cellbender Sample4
+CATACCAAGTAACCTG-1  0.7256608 Cellbender Sample4
+TCAGAGGAGCGCCTTC-1  1.4234551 Cellbender Sample4</code></pre>
 <pre class="r"><code>############################### raw
 
 rawfiles[4]</code></pre>
@@ -1408,7 +1442,7 @@ master_compare_df &lt;- do.call(rbind, all_metadata_list)
 table(master_compare_df$Sample)</code></pre>
 <pre><code>
 Sample1 Sample2 Sample3 Sample4 
-   3914   32306   38122   28420 </code></pre>
+   4252    3537    5410    3282 </code></pre>
 </div>
 <div id="comparing-cell-counts" class="section level1">
 <h1>Comparing cell counts</h1>
@@ -1429,9 +1463,9 @@ ggplot(counts_wide, aes(x = Raw, y = Cellbender)) +
   
   # Labels
   geom_text_repel(aes(label = Sample), size = 3.5, fontface = &quot;bold&quot;, box.padding = 0.4) +
-  
+  coord_equal(xlim = c(1000, 3500), ylim = c(1000, 2500)) +
   # Layout styling
-  theme_classic() +
+  theme_bw() +
   labs(
     title = &quot;Cell Count Retention: Raw vs. Cellbender&quot;,
     x = &quot;Raw Cell Count (Cellranger)&quot;,
@@ -1646,6 +1680,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/23428688350d8cf05ddefd9e98b031862df4f29c/docs/figure/Magda_Samples.Rmd/unnamed-chunk-9-1.png" target="_blank">2342868</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-11
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/f919454beedb1118dc72b4580739a88fc82c1b19/docs/figure/Magda_Samples.Rmd/unnamed-chunk-9-1.png" target="_blank">f919454</a>
 </td>
 <td>
@@ -1683,6 +1728,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/23428688350d8cf05ddefd9e98b031862df4f29c/docs/figure/Magda_Samples.Rmd/unnamed-chunk-9-2.png" target="_blank">2342868</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-11
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/f919454beedb1118dc72b4580739a88fc82c1b19/docs/figure/Magda_Samples.Rmd/unnamed-chunk-9-2.png" target="_blank">f919454</a>
@@ -1724,6 +1780,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/23428688350d8cf05ddefd9e98b031862df4f29c/docs/figure/Magda_Samples.Rmd/unnamed-chunk-9-3.png" target="_blank">2342868</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-11
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/f919454beedb1118dc72b4580739a88fc82c1b19/docs/figure/Magda_Samples.Rmd/unnamed-chunk-9-3.png" target="_blank">f919454</a>
 </td>
 <td>
@@ -1761,6 +1828,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/23428688350d8cf05ddefd9e98b031862df4f29c/docs/figure/Magda_Samples.Rmd/unnamed-chunk-9-4.png" target="_blank">2342868</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-11
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/f919454beedb1118dc72b4580739a88fc82c1b19/docs/figure/Magda_Samples.Rmd/unnamed-chunk-9-4.png" target="_blank">f919454</a>
@@ -1828,6 +1906,43 @@ Active assay: RNA (38606 features, 0 variable features)
   raster = FALSE
 )</code></pre>
 <p><img src="figure/Magda_Samples.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/23428688350d8cf05ddefd9e98b031862df4f29c/docs/figure/Magda_Samples.Rmd/unnamed-chunk-10-1.png" target="_blank">2342868</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>VlnPlot(
   object = bender.s1,
   features = &quot;nFeature_RNA&quot;,
@@ -1835,6 +1950,43 @@ Active assay: RNA (38606 features, 0 variable features)
   raster = FALSE
 )</code></pre>
 <p><img src="figure/Magda_Samples.Rmd/unnamed-chunk-10-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-2">
+Past versions of unnamed-chunk-10-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Sophie-Alice/Cellbender_Comp/blob/23428688350d8cf05ddefd9e98b031862df4f29c/docs/figure/Magda_Samples.Rmd/unnamed-chunk-10-2.png" target="_blank">2342868</a>
+</td>
+<td>
+Sophie
+</td>
+<td>
+2026-06-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>############################### raw
 
 #path2 &lt;- &quot;/shares/rheumatologie.usz/Gino/Laura/Cellranger_output/Exp3_CMHEF_TGF_filtered_feature_bc_matrix.h5&quot;
