@@ -29,7 +29,7 @@ library(workflowr)
 
 ```{r error=FALSE, warning=FALSE}
 
-Cellbender.master <- "/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output"
+Cellbender.master <- "/shares/rheumatologie.usz/Sophie/Gabi_Projects/CellBender_checks_data/Cellbender_output_2ndrun"
 
 benderfiles <- list.files(
   path = Cellbender.master, 
@@ -337,9 +337,9 @@ ggplot(counts_wide, aes(x = Raw, y = Cellbender)) +
   
   # Labels
   geom_text_repel(aes(label = Sample), size = 3.5, fontface = "bold", box.padding = 0.4) +
-  
+  coord_equal(xlim = c(1000, 3500), ylim = c(1000, 2500)) +
   # Layout styling
-  theme_classic() +
+  theme_bw() +
   labs(
     title = "Cell Count Retention: Raw vs. Cellbender",
     x = "Raw Cell Count (Cellranger)",
