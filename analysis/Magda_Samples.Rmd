@@ -317,7 +317,6 @@ table(master_compare_df$Sample)
 
 # Comparing cell counts
 
-Sample 2-4 seems like something went wrong..
 
 ```{r error=FALSE, warning=FALSE}
 
